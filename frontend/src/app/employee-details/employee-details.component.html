@@ -1,0 +1,20 @@
+<h3> Detalhes do Funcionário</h3>
+<br>
+<div>
+    <div>
+        <label> <b> Nome: </b></label> {{employee.firstName}}
+    </div>
+    <div>
+        <label> <b> Sobrenome: </b></label> {{employee.lastName}}
+    </div>
+    <div>
+        <label> <b> Email: </b></label> {{employee.emailId}}
+    </div>
+     <div>
+        <label> <b> Saldo: </b></label> {{ employee.saldo | currency  : 'BRL'  }}
+    </div>
+    <div>
+        <label> <b> Grupo: </b></label> {{employee.type}}
+    </div>
+</div>
+<br>

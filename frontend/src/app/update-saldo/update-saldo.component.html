@@ -1,0 +1,49 @@
+<br><br>
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+        <div class="row">
+            <h3 class="text-center"> Ajustar Saldo </h3>
+            <hr />
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label> Nome</label>
+                        <input type="text" class="form-control" id="firstName" [(ngModel)]="employee.firstName"
+                            name="firstName" [disabled]="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Sobrenome</label>
+                        <input type="text" class="form-control" id="lastName" [(ngModel)]="employee.lastName"
+                            name="lastName" [disabled]="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label> Email</label>
+                        <input type="text" class="form-control" id="emailId" [(ngModel)]="employee.emailId"
+                            name="emailId" [disabled]="true">
+                    </div>
+                    
+                     <div class="form-group">
+                        <label> Saldo</label>
+                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+                            type="text" class="form-control" id="saldo" [(ngModel)]="employee.saldo"
+                            name="saldo" autocomplete="off" maxLength=13>
+                    </div>
+                    <br />
+                    <div *ngIf="SaldoRequired.errors" class="alert alert-danger">
+						    {{ messageInputRequired }}
+					 </div>
+					 
+					 <div *ngIf="SaldoMaxLenght.errors" class="alert alert-danger">
+						    {{ messageInputMaxLenght }}
+					 </div>
+                    <br />
+                    <button class="btn btn-success" type="submit">Salvar</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
