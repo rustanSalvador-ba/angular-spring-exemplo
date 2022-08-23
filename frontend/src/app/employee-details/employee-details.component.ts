@@ -15,7 +15,7 @@ export class EmployeeDetailsComponent implements OnInit {
   id: number;
   id_user: number
   employee: Employee;
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute,
   private router: Router, private employeService: EmployeeService) { }
 
   ngOnInit(): void {
@@ -25,19 +25,17 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeService.getEmployeeById(this.id).subscribe( data => {
       this.employee = data;
     });
-    
+
     this.id_user = this.route.snapshot.params['id_user'];
     this.employeService.getEmployeeById(this.id_user).subscribe(data => {
-	
       if (!data.status) {
-			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
-				 this.router.navigate(['login']);
-	  }
+			  Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
+				this.router.navigate(['login']);
+	    }
     }, error => {
-		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
-		this.router.navigate(['login']);
-	}
-    );
+      Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
+      this.router.navigate(['login']);
+	  });
   }
-   
+
 }

@@ -31,17 +31,17 @@ export class CreateEmployeeComponent implements OnInit {
     private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-	this.id = this.route.snapshot.params['id'];
-	this.employeeService.getEmployeeById(this.id).subscribe(data => {
-	     this.employee = data;
-	      if (!this.employee.status) {
-			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
-				 this.router.navigate(['login']);
-			}
+    this.id = this.route.snapshot.params['id'];
+    this.employeeService.getEmployeeById(this.id).subscribe(data => {
+      this.employee = data;
+      if (!this.employee.status) {
+        Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
+        this.router.navigate(['login']);
+      }
 
     }, error => {
-		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
-		this.router.navigate(['login']);
+      Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
+      this.router.navigate(['login']);
     })
   }
 
@@ -59,19 +59,18 @@ export class CreateEmployeeComponent implements OnInit {
 	 this.PasswordRequired = new FormControl(this.employee.password, Validators.required);
 	 this.TypeRequired = new FormControl(this.employee.type, Validators.required);
 
-      if (!this.UsernameRequired.errors && !this.LastnameRequired.errors
-	      && !this.EmailRequired.errors && !this.EmailValid.errors
-	      && !this.PasswordRequired.errors && !this.TypeRequired.errors) {
+    if (!this.UsernameRequired.errors && !this.LastnameRequired.errors
+      && !this.EmailRequired.errors && !this.EmailValid.errors
+      && !this.PasswordRequired.errors && !this.TypeRequired.errors) {
 
-		this.employeeService.createEmployee(this.employee).subscribe( data =>{
-			this.employee = data;
-			Swal.fire({title: "Cadastrado com sucesso!",  text: this.employee.emailId,  icon: 'success'})
-			this.goToEmployeeList(this.id);
-	    },
-	    error =>  {
-			Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
-    	})
-	  }
+      this.employeeService.createEmployee(this.employee).subscribe( data =>{
+        this.employee = data;
+        Swal.fire({title: "Cadastrado com sucesso!",  text: this.employee.emailId,  icon: 'success'})
+        this.goToEmployeeList(this.id);
+      }, error =>  {
+        Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
+      })
+    }
   }
 
   goToEmployeeList(id: number){
