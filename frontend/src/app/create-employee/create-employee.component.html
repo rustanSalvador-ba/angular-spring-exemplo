@@ -27,7 +27,7 @@
 
           <div class="form-group">
             <label> Email </label>
-            <input type="text" class="form-control" id="emailId" [(ngModel)]="employee.emailId" name="emailId">
+            <input type="text" class="form-control" id="emailId" [(ngModel)]="employee.emailId" name="emailId" autocomplete="false">
           </div>
 
           <div *ngIf="EmailRequired.errors" class="alert alert-danger">
@@ -42,7 +42,7 @@
             <label> Senha </label>
             <input type="password" class="form-control" id="password" [(ngModel)]="employee.password"  name="password" autocomplete="false">
           </div>
-          
+
           <div *ngIf="PasswordRequired.errors" class="alert alert-danger">
             {{ messageInputRequired }}
           </div>

@@ -33,8 +33,7 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.employeeService.getEmployeeById(this.id).subscribe(data => {
-      this.employee = data;
-      if (!this.employee.status) {
+      if (!data.status) {
         Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
         this.router.navigate(['login']);
       }
