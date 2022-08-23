@@ -1,35 +1,37 @@
 <br><br>
 <div class="row">
-    <div class="card col-md-6 offset-md-3 offset-md-3">
-        <div class="row">
-            <h3 class="text-center">Login </h3>
-            <hr />
-            <div class="card-body">
-                <form (ngSubmit)="onSubmit()" name="login-form">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <div class="row">
+      <h3 class="text-center">Login </h3>
+      <hr />
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" name="login-form">
 
-                    <div class="form-group">
-                        <label> Email </label>
-                        <input type="email" class="form-control" id="emailId" [(ngModel)]="employee.emailId"
-                            name="emailId">
-                    </div>
-                     <div *ngIf="EmailRequired.errors" class="alert alert-danger">
-						    {{ messageInputRequired }}
-					 </div>
-					 <div *ngIf="EmailValid.errors" class="alert alert-danger">
-						    {{ messageInputEmailValid }}
-					 </div>
-					  <div class="form-group">
-                        <label> Senha </label>
-                        <input type="password" class="form-control" id="password" [(ngModel)]="employee.password"
-                            name="password">
-                    </div>
-                     <div *ngIf="PasswordRequired.errors" class="alert alert-danger">
-						    {{ messageInputRequired }}
-					 </div>
-                    <br />
-                    <button class="btn btn-success" type="submit">Login</button>
-                </form>
-            </div>
-        </div>
+          <div class="form-group">
+            <label> Email </label>
+            <input type="email" class="form-control" id="emailId" [(ngModel)]="employee.emailId" name="emailId">
+          </div>
+
+          <div *ngIf="EmailRequired.errors" class="alert alert-danger">
+            {{ messageInputRequired }}
+          </div>
+          <div *ngIf="EmailValid.errors" class="alert alert-danger">
+            {{ messageInputEmailValid }}
+          </div>
+
+          <div class="form-group">
+            <label> Senha </label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="employee.password" name="password">
+          </div>
+          
+          <div *ngIf="PasswordRequired.errors" class="alert alert-danger">
+            {{ messageInputRequired }}
+          </div>
+
+          <br />
+          <button class="btn btn-success" type="submit">Login</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

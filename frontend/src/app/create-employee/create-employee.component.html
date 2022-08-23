@@ -1,66 +1,68 @@
 <br><br>
 <div class="row">
-    <div class="card col-md-6 offset-md-3 offset-md-3">
-        <div class="row">
-            <h3 class="text-center"> Adicionar Funcionário </h3>
-            <hr />
-            <div class="card-body">
-                <form (ngSubmit)="onSubmit()" name="create-form">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <div class="row">
+      <h3 class="text-center"> Adicionar Funcionário </h3>
+      <hr />
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" name="create-form">
 
-                    <div class="form-group">
-                        <label> Nome </label>
-                        <input type="text" class="form-control" id="firstName" [(ngModel)]="employee.firstName"
-                            name="firstName">
-                    </div>
-					  <div *ngIf="UsernameRequired.errors" class="alert alert-danger">
-						    {{ messageInputRequired }}
-					 </div>
-                    <div class="form-group">
-	                     <label> Sobrenome </label>
-	                     <input type="text" class="form-control" id="lastName" [(ngModel)]="employee.lastName"
-	                         name="lastName">
-                    </div>
-					  <div *ngIf="LastnameRequired.errors" class="alert alert-danger">
-						    {{ messageInputRequired }}
-					 </div>
-                    <div class="form-group">
-                        <label> Email </label>
-                        <input type="text" class="form-control" id="emailId" [(ngModel)]="employee.emailId"
-                            name="emailId">
-                    </div>
-                     <div *ngIf="EmailRequired.errors" class="alert alert-danger">
-						    {{ messageInputRequired }}
-					 </div>
-					 <div *ngIf="EmailValid.errors" class="alert alert-danger">
-						    {{ messageInputEmailValid }}
-					 </div>
-                   
-                    <div class="form-group">
-                        <label> Senha </label>
-                        <input type="password" class="form-control" id="password" [(ngModel)]="employee.password"
-                            name="password" autocomplete="false">
-                    </div>
-                    
-                    <div *ngIf="PasswordRequired.errors" class="alert alert-danger">
-						    {{ messageInputRequired }}
-					</div>
-					 
-                    <div class="form-group col-md-6">
-	                   <label> Grupo </label>
-	                   <select class="form-control" [(ngModel)]="employee.type" id="type" name="type">
-		                    <option value="Admin">Admin</option>
-		                    <option value="Usuário">Usuário</option>
-	                    </select>
-                    </div> 
-                    
-                    <div *ngIf="TypeRequired.errors" class="alert alert-danger">
-						    {{ messageInputRequired }}
-					</div>
-                     <br />
-                    <button class="btn btn-success" type="submit">Salvar</button>
+          <div class="form-group">
+            <label> Nome </label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="employee.firstName" name="firstName">
+          </div>
 
-                </form>
-            </div>
-        </div>
+          <div *ngIf="UsernameRequired.errors" class="alert alert-danger">
+            {{ messageInputRequired }}
+          </div>
+
+          <div class="form-group">
+            <label> Sobrenome </label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="employee.lastName" name="lastName">
+          </div>
+
+          <div *ngIf="LastnameRequired.errors" class="alert alert-danger">
+            {{ messageInputRequired }}
+          </div>
+
+          <div class="form-group">
+            <label> Email </label>
+            <input type="text" class="form-control" id="emailId" [(ngModel)]="employee.emailId" name="emailId">
+          </div>
+
+          <div *ngIf="EmailRequired.errors" class="alert alert-danger">
+            {{ messageInputRequired }}
+          </div>
+
+          <div *ngIf="EmailValid.errors" class="alert alert-danger">
+            {{ messageInputEmailValid }}
+          </div>
+
+          <div class="form-group">
+            <label> Senha </label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="employee.password"  name="password" autocomplete="false">
+          </div>
+          
+          <div *ngIf="PasswordRequired.errors" class="alert alert-danger">
+            {{ messageInputRequired }}
+          </div>
+
+          <div class="form-group col-md-6">
+            <label> Grupo </label>
+            <select class="form-control" [(ngModel)]="employee.type" id="type" name="type">
+              <option value="Admin">Admin</option>
+              <option value="Usuário">Usuário</option>
+            </select>
+          </div>
+
+          <div *ngIf="TypeRequired.errors" class="alert alert-danger">
+            {{ messageInputRequired }}
+          </div>
+
+          <br />
+          <button class="btn btn-success" type="submit">Salvar</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

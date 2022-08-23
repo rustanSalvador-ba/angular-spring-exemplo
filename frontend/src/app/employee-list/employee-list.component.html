@@ -1,32 +1,32 @@
 <br><br>
 <div class = "row">
-    <h2> Lista de Funcionários </h2>
+  <h2> Lista de Funcionários </h2>
 </div>
 
 <table class = "table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th> Nome </th>
-            <th> Sobrenome </th>
-            <th> E-mail </th>
-            <th> Grupo </th>
-            <th> Saldo </th>
-            <th> Ações </th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th> Nome </th>
+      <th> Sobrenome </th>
+      <th> E-mail </th>
+      <th> Grupo </th>
+      <th> Saldo </th>
+      <th> Ações </th>
+    </tr>
+  </thead>
     <tbody>
-        <tr *ngFor = "let employee of employees" >
-            <td> {{ employee.firstName }} </td>
-            <td> {{ employee.lastName }} </td>
-            <td> {{ employee.emailId }} </td>
-            <td> {{ employee.type }} </td>
-            <td> {{ employee.saldo | currency  : 'BRL' }} </td>
-            <td>
-                <button (click) = "employeeDetails(employee.id, this.id)" class = "btn btn-primary" style="margin-left: 10px"> Visualizar</button>
-                <button *ngIf="this.id==employee.id || this.type=='Admin'" (click) = "updateEmployee(employee.id, this.id)" class = "btn btn-warning"  style="margin-left: 10px"> Editar</button>
-                <button *ngIf="this.id==employee.id || this.type=='Admin'" (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Apagar</button>
-                <button *ngIf="this.type=='Admin'" (click) = "updateSaldo(employee.id, this.id)" class = "btn btn-success" style="margin-left: 10px"> Saldo</button>
-            </td>
-        </tr>
+      <tr *ngFor = "let employee of employees" >
+        <td> {{ employee.firstName }} </td>
+        <td> {{ employee.lastName }} </td>
+        <td> {{ employee.emailId }} </td>
+        <td> {{ employee.type }} </td>
+        <td> {{ employee.saldo | currency  : 'BRL' }} </td>
+        <td>
+          <button (click) = "employeeDetails(employee.id, this.id)" class = "btn btn-primary" style="margin-left: 10px"> Visualizar</button>
+          <button *ngIf="this.id==employee.id || this.type=='Admin'" (click) = "updateEmployee(employee.id, this.id)" class = "btn btn-warning"  style="margin-left: 10px"> Editar</button>
+          <button *ngIf="this.id==employee.id || this.type=='Admin'" (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Apagar</button>
+          <button *ngIf="this.type=='Admin'" (click) = "updateSaldo(employee.id, this.id)" class = "btn btn-success" style="margin-left: 10px"> Saldo</button>
+        </td>
+      </tr>
     </tbody>
 </table>
