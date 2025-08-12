@@ -34,13 +34,12 @@ export class LoginComponent implements OnInit {
 	 this.EmailValid = new FormControl(this.employee.emailId, Validators.email);
 
       if (!this.PasswordRequired.errors && !this.EmailRequired.errors && !this.EmailValid.errors ) {
-		this.employeeService.login(this.employee).subscribe( data =>{
-			this.employee = data;
-			this.id = this.employee.id;
-			window.location.href = '/employees/'+this.employee.id;
+		    this.employeeService.login(this.employee).subscribe( data =>{
+			  this.employee = data;
+			  this.id = this.employee.id;
+		    window.location.href = '/employees/'+this.employee.id;
 	    },
 	    error => Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'}));
-
 	  }
   }
 

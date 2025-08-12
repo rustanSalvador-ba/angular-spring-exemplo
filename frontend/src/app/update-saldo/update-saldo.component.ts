@@ -29,21 +29,21 @@ export class UpdateSaldoComponent implements OnInit {
     this.employeeService.getEmployeeById(this.id).subscribe(data => {
       this.employee = data;
     }, error =>  {
-		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
-		this.router.navigate(['login']);
+		  Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
+		  this.router.navigate(['login']);
     })
 
     this.id_user = this.route.snapshot.params['id_user'];
     this.employeeService.getEmployeeById(this.id_user).subscribe(data => {
 
       if (!data.status) {
-			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
+			   Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
 				 this.router.navigate(['login']);
-	  }
+	    }
     }, error => {
-		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
-		this.router.navigate(['login']);
-	}
+		 Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
+		 this.router.navigate(['login']);
+	 }
     );
   }
 
@@ -52,10 +52,10 @@ export class UpdateSaldoComponent implements OnInit {
 	 this.SaldoMaxLenght = new FormControl(this.employee.saldo, Validators.maxLength(10));
 
 	 if (!this.SaldoRequired.errors && !this.SaldoMaxLenght.errors) {
-		this.employeeService.updateSaldo(this.id, this.employee).subscribe( data =>{
-		 Swal.fire({title: "Editado com sucesso!", icon: 'success'})
-	     history.back()
-        }, error => Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'}));
-	}
+      this.employeeService.updateSaldo(this.id, this.employee).subscribe( data =>{
+         Swal.fire({title: "Editado com sucesso!", icon: 'success'})
+         history.back()
+      }, error => Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'}));
+	 }
   }
 }

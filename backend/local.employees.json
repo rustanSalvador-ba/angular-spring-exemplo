@@ -1,0 +1,63 @@
+[{
+  "_id": {
+    "$oid": "689b4b22a54b00b202501b51"
+  },
+  "firstName": "Ana",
+  "lastName": "Silva Sauro",
+  "emailId": "ana.silva@example.com",
+  "saldo": 1500.760009765625,
+  "password": "senha123",
+  "status": true,
+  "type": "admin",
+  "_class": "com.backend.spring.model.Employee"
+},
+{
+  "_id": {
+    "$oid": "689b4b22a54b00b202501b52"
+  },
+  "firstName": "Carlos",
+  "lastName": "Oliveira",
+  "emailId": "carlos.oliveira@example.com",
+  "saldo": 980.5,
+  "password": "segredo456",
+  "status": false,
+  "type": "user"
+},
+{
+  "_id": {
+    "$oid": "689b4b22a54b00b202501b53"
+  },
+  "firstName": "Fernanda",
+  "lastName": "Costa",
+  "emailId": "fernanda.costa@example.com",
+  "saldo": 2300,
+  "password": "123456",
+  "status": false,
+  "type": "manager",
+  "_class": "com.backend.spring.model.Employee"
+},
+{
+  "_id": {
+    "$oid": "689b4b22a54b00b202501b54"
+  },
+  "firstName": "João",
+  "lastName": "Pereira",
+  "emailId": "joao.pereira@example.com",
+  "saldo": 0,
+  "password": "joaopass",
+  "status": false,
+  "type": "user",
+  "_class": "com.backend.spring.model.Employee"
+},
+{
+  "_id": {
+    "$oid": "689b84ffad8cf6342fcce357"
+  },
+  "firstName": "Fulano",
+  "lastName": "Santos Santos",
+  "emailId": "fulano@exemple.com",
+  "saldo": 10,
+  "password": "1234",
+  "type": "user",
+  "_class": "com.backend.spring.model.Employee"
+}]

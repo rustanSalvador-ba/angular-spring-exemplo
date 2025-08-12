@@ -30,14 +30,13 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeService.getEmployeeById(this.id_user).subscribe(data => {
 
       if (!data.status) {
-			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
+			   Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
 				 this.router.navigate(['login']);
-	  }
-    }, error => {
-		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
-		this.router.navigate(['login']);
-	}
-    );
+	    }
+      }, error => {
+        Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
+        this.router.navigate(['login']);
+      }
+   );
   }
-
 }

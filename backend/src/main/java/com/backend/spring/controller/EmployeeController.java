@@ -32,13 +32,11 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
-	// get all employees
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployees(){
 		return employeeRepository.findAll();
 	}	
 	
-	// create employee rest api
 	@PostMapping("/employees")
 	public Employee createEmployee(@RequestBody Employee employee) throws ValidationException {
 		
@@ -50,7 +48,6 @@ public class EmployeeController {
 		}
 	}
 	
-	// login rest api
 		@PostMapping("/employees/login")
 		public ResponseEntity<Employee> login(@RequestBody Employee employee) throws ValidationException {
 			
@@ -64,8 +61,7 @@ public class EmployeeController {
 				throw new ValidationException("Email ou senha incorretos: " + employee.getEmailId());
 			}
 		}
-		
-		// logout rest api
+
 		@PostMapping("/employees/logout/{id}")
 		public ResponseEntity<Employee> logout(@PathVariable String id) throws ValidationException {
 			Employee employee = employeeRepository.findById(id)
@@ -75,16 +71,13 @@ public class EmployeeController {
 			Employee updatedEmployee = employeeRepository.save(employee);
 			return ResponseEntity.ok(updatedEmployee);
 		}
-		
-	// get employee by id rest api
+
 	@GetMapping("/employees/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable String id) {
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Funcionário não existe, id :" + id));
 		return ResponseEntity.ok(employee);
 	}
-	
-	// update employee rest api
 	
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable String id, @RequestBody Employee employeeDetails) throws ValidationException{
@@ -102,11 +95,8 @@ public class EmployeeController {
 		else {
 		      throw new ValidationException("Email já cadastrado: " + employeeDetails.getEmailId());
 		}
-		
-		
 	}
-	
-	// update saldo rest api
+
 	
 	@PutMapping("/employees/update-saldo/{id}")
 	public ResponseEntity<Employee> updateSaldo(@PathVariable String id, @RequestBody Employee employeeDetails){

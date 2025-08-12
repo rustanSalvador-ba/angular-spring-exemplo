@@ -28,14 +28,15 @@ export class EmployeeListComponent implements OnInit {
 	     this.employee = data;
 	     this.type = data.type;
 	      if (!this.employee.status) {
-			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
+			   Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
 				 this.router.navigate(['login']);
-			}
+			  }
+
 	     this.getEmployees();
 
     }, error => {
-		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
-		this.router.navigate(['login']);
+		  Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
+		  this.router.navigate(['login']);
     })
   }
 
@@ -60,11 +61,12 @@ export class EmployeeListComponent implements OnInit {
   deleteEmployee(id: string){
     this.employeeService.deleteEmployee(id).subscribe( data => {
 	    Swal.fire({title: "Excluído com sucesso!", icon: 'success'});
+
 	    if (id == this.employee.id) {
-			this.router.navigate(['login']);
-		} else {
-			this.getEmployees();
-		}
+		  	this.router.navigate(['login']);
+		  } else {
+			  this.getEmployees();
+	  	}
     })
   }
 }

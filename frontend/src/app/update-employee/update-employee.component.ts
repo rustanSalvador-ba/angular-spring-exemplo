@@ -63,8 +63,7 @@ export class UpdateEmployeeComponent implements OnInit {
 		 this.employeeService.updateEmployee(this.id, this.employee).subscribe( data =>{
 			Swal.fire({title: "Editado com sucesso!", icon: 'success'})
 			history.back()
-		}
-       , error => Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'}));
+		}, error => Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'}));
     }
   }
 }
