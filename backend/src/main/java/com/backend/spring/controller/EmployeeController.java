@@ -67,7 +67,7 @@ public class EmployeeController {
 		
 		// logout rest api
 		@PostMapping("/employees/logout/{id}")
-		public ResponseEntity<Employee> logout(@PathVariable Long id) throws ValidationException {
+		public ResponseEntity<Employee> logout(@PathVariable String id) throws ValidationException {
 			Employee employee = employeeRepository.findById(id)
 					.orElseThrow(() -> new ResourceNotFoundException("Funcionário não existe, id :" + id));
 			
@@ -78,7 +78,7 @@ public class EmployeeController {
 		
 	// get employee by id rest api
 	@GetMapping("/employees/{id}")
-	public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable String id) {
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Funcionário não existe, id :" + id));
 		return ResponseEntity.ok(employee);
@@ -87,7 +87,7 @@ public class EmployeeController {
 	// update employee rest api
 	
 	@PutMapping("/employees/{id}")
-	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) throws ValidationException{
+	public ResponseEntity<Employee> updateEmployee(@PathVariable String id, @RequestBody Employee employeeDetails) throws ValidationException{
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Funcionário não existe, id :" + id));
 		
@@ -109,7 +109,7 @@ public class EmployeeController {
 	// update saldo rest api
 	
 	@PutMapping("/employees/update-saldo/{id}")
-	public ResponseEntity<Employee> updateSaldo(@PathVariable Long id, @RequestBody Employee employeeDetails){
+	public ResponseEntity<Employee> updateSaldo(@PathVariable String id, @RequestBody Employee employeeDetails){
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Funcionário não existe, id :" + id));
 		employee.setSaldo(employeeDetails.getSaldo());
@@ -121,7 +121,7 @@ public class EmployeeController {
 	
 	// delete employee rest api
 	@DeleteMapping("/employees/{id}")
-	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
+	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable String id){
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Funcionário não existe, id :" + id));
 		

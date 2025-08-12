@@ -12,7 +12,7 @@ export class EmployeeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getEmployeesList(id: number): Observable<Employee[]>{
+  getEmployeesList(id: string): Observable<Employee[]>{
     return this.httpClient.get<Employee[]>(`${this.baseURL}`);
   }
 
@@ -20,27 +20,27 @@ export class EmployeeService {
     return this.httpClient.post<Employee>(`${this.baseURL}`, employee);
   }
 
-  getEmployeeById(id: number): Observable<Employee>{
+  getEmployeeById(id: string): Observable<Employee>{
     return this.httpClient.get<Employee>(`${this.baseURL}/${id}`);
   }
 
-  updateEmployee(id: number, employee: Employee): Observable<Object>{
+  updateEmployee(id: string, employee: Employee): Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`, employee);
   }
-  
-  updateSaldo(id: number, employee: Employee): Observable<Object>{
+
+  updateSaldo(id: string, employee: Employee): Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/update-saldo/${id}`, employee);
   }
-  
+
   login(employee: Employee): Observable<Employee>{
     return this.httpClient.post<Employee>(`${this.baseURL}/login`, employee);
   }
-  
-  logout(id: number): Observable<Object>{
+
+  logout(id: string): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}/logout/${id}`, id);
   }
-  
-  deleteEmployee(id: number): Observable<Object>{
+
+  deleteEmployee(id: string): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 }

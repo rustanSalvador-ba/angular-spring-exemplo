@@ -13,14 +13,14 @@ import Swal from 'sweetalert2';
 
 export class UpdateSaldoComponent implements OnInit {
 
-  id: number;
-  id_user: number;
+  id: string;
+  id_user: string;
   SaldoRequired = new FormControl();
   SaldoMaxLenght = new FormControl();
   messageInputRequired = "O campo é obrigatório.";
   messageInputMaxLenght = "O campo deve ter menos de 10 digitos.";
   employee: Employee = new Employee();
-  constructor(private employeeService: EmployeeService, 
+  constructor(private employeeService: EmployeeService,
   private route: ActivatedRoute,   private router: Router) { }
 
   ngOnInit(): void {
@@ -32,10 +32,10 @@ export class UpdateSaldoComponent implements OnInit {
 		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
 		this.router.navigate(['login']);
     })
-    
+
     this.id_user = this.route.snapshot.params['id_user'];
     this.employeeService.getEmployeeById(this.id_user).subscribe(data => {
-	
+
       if (!data.status) {
 			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
 				 this.router.navigate(['login']);
@@ -50,7 +50,7 @@ export class UpdateSaldoComponent implements OnInit {
   onSubmit(){
 	 this.SaldoRequired = new FormControl(this.employee.saldo, Validators.required);
 	 this.SaldoMaxLenght = new FormControl(this.employee.saldo, Validators.maxLength(10));
-	 
+
 	 if (!this.SaldoRequired.errors && !this.SaldoMaxLenght.errors) {
 		this.employeeService.updateSaldo(this.id, this.employee).subscribe( data =>{
 		 Swal.fire({title: "Editado com sucesso!", icon: 'success'})

@@ -34,25 +34,26 @@
 					 <div *ngIf="EmailValid.errors" class="alert alert-danger">
 						    {{ messageInputEmailValid }}
 					 </div>
-                   
+
                     <div class="form-group">
                         <label> Senha </label>
                         <input type="password" class="form-control" id="password" [(ngModel)]="employee.password"
                             name="password" autocomplete="false">
                     </div>
-                    
+
                     <div *ngIf="PasswordRequired.errors" class="alert alert-danger">
 						    {{ messageInputRequired }}
 					</div>
-					 
+
                     <div class="form-group col-md-6">
 	                   <label> Grupo </label>
 	                   <select class="form-control" [(ngModel)]="employee.type" id="type" name="type">
-		                    <option value="Admin">Admin</option>
-		                    <option value="Usuário">Usuário</option>
+		                    <option value="admin">Admin</option>
+                       <option value="manager">Gerente</option>
+		                    <option value="user">Usuário</option>
 	                    </select>
-                    </div> 
-                    
+                    </div>
+
                     <div *ngIf="TypeRequired.errors" class="alert alert-danger">
 						    {{ messageInputRequired }}
 					</div>

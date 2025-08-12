@@ -11,19 +11,19 @@ import Swal from 'sweetalert2';
 })
 
 export class EmployeeListComponent implements OnInit {
-	
-  id: number;
+
+  id: string;
   type:string;
   employees: Employee[];
   employee: Employee = new Employee();
-  
+
   constructor(private employeeService: EmployeeService,
     private router: Router,
     private route:  ActivatedRoute) { }
 
   ngOnInit(): void {
 	 this.id = this.route.snapshot.params['id'];
-	 
+
 	 this.employeeService.getEmployeeById(this.id).subscribe(data => {
 	     this.employee = data;
 	     this.type = data.type;
@@ -32,7 +32,7 @@ export class EmployeeListComponent implements OnInit {
 				 this.router.navigate(['login']);
 			}
 	     this.getEmployees();
-	    
+
     }, error => {
 		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
 		this.router.navigate(['login']);
@@ -45,19 +45,19 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  employeeDetails(id: number, id_user: number){
+  employeeDetails(id: string, id_user: string){
     this.router.navigate(['employee-details', id, id_user]);
   }
 
-  updateEmployee(id: number, id_user: number){
+  updateEmployee(id: string, id_user: string){
     this.router.navigate(['update-employee', id, id_user]);
   }
-  
- updateSaldo(id: number, id_user: number){
+
+ updateSaldo(id: string, id_user: string){
     this.router.navigate(['update-saldo', id, id_user]);
   }
-  
-  deleteEmployee(id: number){
+
+  deleteEmployee(id: string){
     this.employeeService.deleteEmployee(id).subscribe( data => {
 	    Swal.fire({title: "Excluído com sucesso!", icon: 'success'});
 	    if (id == this.employee.id) {

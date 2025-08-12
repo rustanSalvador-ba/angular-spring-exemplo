@@ -14,8 +14,8 @@ import { FormControl, Validators } from '@angular/forms';
 
 
 export class CreateEmployeeComponent implements OnInit {
-	
-  id: number;
+
+  id: string;
   UsernameRequired = new FormControl();
   LastnameRequired = new FormControl();
   EmailRequired = new FormControl();
@@ -24,7 +24,8 @@ export class CreateEmployeeComponent implements OnInit {
   TypeRequired = new FormControl();
   messageInputRequired = "O campo é obrigatório.";
   messageInputEmailValid = "Formato de e-mail inválido.";
-  
+
+  user: Employee = new Employee();
   employee: Employee = new Employee();
   constructor(private employeeService: EmployeeService,
     private router: Router,
@@ -33,12 +34,12 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
 	this.id = this.route.snapshot.params['id'];
 	this.employeeService.getEmployeeById(this.id).subscribe(data => {
-	     this.employee = data;
-	      if (!this.employee.status) {
+	     this.user = data;
+	      if (!this.user.status) {
 			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
 				 this.router.navigate(['login']);
 			}
-	    
+
     }, error => {
 		Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
 		this.router.navigate(['login']);
@@ -46,23 +47,23 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   saveEmployee(){
-	
-	 if (!this.employee.status) {
+
+	 if (!this.user.status) {
 			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
 				 this.router.navigate(['login']);
 	  }
-	   
+
 	 this.UsernameRequired = new FormControl(this.employee.firstName, Validators.required);
 	 this.LastnameRequired = new FormControl(this.employee.lastName, Validators.required);
 	 this.EmailRequired = new FormControl(this.employee.emailId, Validators.required);
 	 this.EmailValid = new FormControl(this.employee.emailId, Validators.email);
 	 this.PasswordRequired = new FormControl(this.employee.password, Validators.required);
 	 this.TypeRequired = new FormControl(this.employee.type, Validators.required);
-	  
-      if (!this.UsernameRequired.errors && !this.LastnameRequired.errors 
+
+      if (!this.UsernameRequired.errors && !this.LastnameRequired.errors
 	      && !this.EmailRequired.errors && !this.EmailValid.errors
 	      && !this.PasswordRequired.errors && !this.TypeRequired.errors) {
-		
+
 		this.employeeService.createEmployee(this.employee).subscribe( data =>{
 			this.employee = data;
 			Swal.fire({title: "Cadastrado com sucesso!",  text: this.employee.emailId,  icon: 'success'})
@@ -71,13 +72,13 @@ export class CreateEmployeeComponent implements OnInit {
 	    error =>  {
 			Swal.fire({title: "Ops!",  text: error.error.message,  icon: 'error'});
     	})
-	  } 
+	  }
   }
 
-  goToEmployeeList(id: number){
+  goToEmployeeList(id: string){
     this.router.navigate(['/employees/'+ id]);
   }
-  
+
   onSubmit(){
     this.saveEmployee();
   }

@@ -23,9 +23,9 @@
             <td> {{ employee.saldo | currency  : 'BRL' }} </td>
             <td>
                 <button (click) = "employeeDetails(employee.id, this.id)" class = "btn btn-primary" style="margin-left: 10px"> Visualizar</button>
-                <button *ngIf="this.id==employee.id || this.type=='Admin'" (click) = "updateEmployee(employee.id, this.id)" class = "btn btn-warning"  style="margin-left: 10px"> Editar</button>
-                <button *ngIf="this.id==employee.id || this.type=='Admin'" (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Apagar</button>
-                <button *ngIf="this.type=='Admin'" (click) = "updateSaldo(employee.id, this.id)" class = "btn btn-success" style="margin-left: 10px"> Saldo</button>
+                <button *ngIf="this.id==employee.id || this.type=='admin'" (click) = "updateEmployee(employee.id, this.id)" class = "btn btn-warning"  style="margin-left: 10px"> Editar</button>
+                <button *ngIf="this.id==employee.id || this.type=='admin'" (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Apagar</button>
+                <button *ngIf="this.type=='admin'" (click) = "updateSaldo(employee.id, this.id)" class = "btn btn-success" style="margin-left: 10px"> Saldo</button>
             </td>
         </tr>
     </tbody>

@@ -1,5 +1,7 @@
 package com.backend.spring.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,33 +9,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "employees")
+//@Entity
+//@Table(name = "employees")
+@Document(collection = "employees")
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 	
-	@Column(name = "first_name")
+	//@Column(name = "first_name")
 	private String firstName;
 
-	@Column(name = "last_name")
+	//@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "email_id")
+	//@Column(name = "email_id")
 	private String emailId;
 	
-	@Column(nullable=true, precision=10, scale=2, name = "saldo")
+	//@Column(nullable=true, precision=10, scale=2, name = "saldo")
 	private Float saldo;
 	
-	@Column(name = "password")
+	//@Column(name = "password")
 	private String password;
 	
-	@Column(name = "status")
+	//@Column(name = "status")
 	private Boolean status;
 
-	@Column(name = "type")
+	//@Column(name = "type")
 	private String type;
 
 	public Employee() {
@@ -46,10 +49,10 @@ public class Employee {
 		this.lastName = lastName;
 		this.saldo = Float.parseFloat("0.00");
 	}
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getFirstName() {

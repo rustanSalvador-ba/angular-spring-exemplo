@@ -12,10 +12,10 @@ import Swal from 'sweetalert2';
 
 export class EmployeeDetailsComponent implements OnInit {
 
-  id: number;
-  id_user: number
+  id: string;
+  id_user: string
   employee: Employee;
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute,
   private router: Router, private employeService: EmployeeService) { }
 
   ngOnInit(): void {
@@ -25,10 +25,10 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeService.getEmployeeById(this.id).subscribe( data => {
       this.employee = data;
     });
-    
+
     this.id_user = this.route.snapshot.params['id_user'];
     this.employeService.getEmployeeById(this.id_user).subscribe(data => {
-	
+
       if (!data.status) {
 			     Swal.fire({title: "Ops!",  text: "Acesso não autorizado.",  icon: 'error'});
 				 this.router.navigate(['login']);
@@ -39,5 +39,5 @@ export class EmployeeDetailsComponent implements OnInit {
 	}
     );
   }
-   
+
 }
